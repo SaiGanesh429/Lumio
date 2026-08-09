@@ -1,6 +1,7 @@
-﻿import "./globals.css";
-import Header from "./components/Header";
-import StoreProvider from "./lib/redux-store/StoreProvider";
+﻿import "../globals.css";
+import Header from "./Header";
+import StoreProvider from "../lib/redux-store/StoreProvider";
+import SideContainer from "./SideContainer";
 
 export default function RootLayout({
   children,
@@ -12,7 +13,11 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <StoreProvider>
           <Header />
-          {children}
+          <div className="flex">
+            <SideContainer />
+            {children}
+          </div>
+
         </StoreProvider>
       </body>
     </html>

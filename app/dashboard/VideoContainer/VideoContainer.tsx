@@ -4,7 +4,7 @@ import VideoCard from "./VideoCard";
 
 export default function VideoContainer() {
 
-    const [videoData, setVideoData] = useState([]);
+    const [videoData, setVideoData] = useState<any[]>([]);
 
     useEffect(() => {
         getVideoData();

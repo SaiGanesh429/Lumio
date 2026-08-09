@@ -1,12 +1,11 @@
 "use client";
 
-import React, { Fragment } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 
 export default function SideContainer() {
 
     const isMenuOpen = useSelector((state: any) => state.app.isSideNavBarOpen);
-    console.log("SideBar State:", isMenuOpen);
     const sideNavItems = [
         { name: "Home", icon: "🏠", list: [] },
         { name: "Trending", icon: "🔥", list: [] },
@@ -19,6 +18,12 @@ export default function SideContainer() {
                 { name: "Gaming", icon: "🎮" },
             ],
         },
+        { name: "Library", icon: "📚", list: [] },
+        { name: "History", icon: "🕒", list: [] },
+        { name: "Your Videos", icon: "🎥", list: [] },
+        { name: "Watch Later", icon: "⏰", list: [] },
+        { name: "Liked Videos", icon: "👍", list: [] },
+        { name: "Show More", icon: "⬇️", list: [] },
     ];
 
     return (isMenuOpen && (

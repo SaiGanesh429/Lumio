@@ -12,7 +12,6 @@ export default function MainContainer() {
     return (
         <div>
             <ButtonList></ButtonList>
-
             <VideoContainer />
         </div>
     )
