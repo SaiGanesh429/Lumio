@@ -1,12 +1,20 @@
 
 
+import { setSelectedVideo } from "@/app/lib/redux-store/videoSlice";
 import Link from "next/link";
+import { useDispatch } from "react-redux";
 
 export default function VideoCard({ video }: { video: any }) {
     const videoId = typeof video.id === "string" ? video.id : video.id?.videoId ?? "";
 
+    const dispatchSelectedVideoDetails = useDispatch();
+    const storeSelectedVideoDeatils = (video: any) => {
+
+        dispatchSelectedVideoDetails(setSelectedVideo(video));
+    }
+
     return (
-        <Link href={`/Videos/${encodeURIComponent(videoId)}`} className="block w-80 h-64 m-2">
+        <Link href={`/Videos/${encodeURIComponent(videoId)}`} onClick={() => { storeSelectedVideoDeatils(video) }} className="block w-80 h-64 m-2">
             <div className="w-full h-40">
                 <img
                     src={video.snippet.thumbnails.high.url}

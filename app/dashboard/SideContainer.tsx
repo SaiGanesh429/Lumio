@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React from "react";
 import { useSelector } from "react-redux";
 
@@ -7,7 +8,7 @@ export default function SideContainer() {
 
     const isMenuOpen = useSelector((state: any) => state.app.isSideNavBarOpen);
     const sideNavItems = [
-        { name: "Home", icon: "🏠", list: [] },
+        { name: "Home", icon: "🏠", list: [], link: "/dashboard" },
         { name: "Trending", icon: "🔥", list: [] },
         {
             name: "Subscriptions",
@@ -31,10 +32,20 @@ export default function SideContainer() {
             <ul>
                 {sideNavItems.map((item, index) => (
                     <React.Fragment key={index}>
-                        <li className="flex items-center gap-2 p-2 hover:bg-gray-200">
-                            <span>{item.icon}</span>
-                            <span className="font-medium bold">{item.name}</span>
-                        </li>
+                        {item?.link
+                            ? (
+                                <Link href={item.link} className="flex items-center gap-2 p-2 hover:bg-gray-200">
+                                    <span>{item.icon}</span>
+                                    <span className="font-medium bold">{item.name}</span>
+                                </Link>
+                            ) :
+                            (
+                                <li className="flex items-center gap-2 p-2 hover:bg-gray-200">
+                                    <span>{item.icon}</span>
+                                    <span className="font-medium bold">{item.name}</span>
+                                </li>
+                            )
+                        }
 
                         {item.list.length > 0 && (
                             <ul className="ml-6">
