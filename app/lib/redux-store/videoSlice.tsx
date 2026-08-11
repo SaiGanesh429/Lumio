@@ -6,6 +6,7 @@ const videoSlice = createSlice({
         selectedVideo: null,
         videoList: [],
         playListVideos: [],
+        historyVideos: [],
         // Define your initial state properties here
     },
     reducers: {
@@ -17,11 +18,14 @@ const videoSlice = createSlice({
         },
         setPlayListVideos: (state: any, action: any) => {
             state.playListVideos = action.payload;
+        },
+        setHistoryVideos: (state: any, action: any) => {
+            state.historyVideos.push(action.payload);
         }
 
     },
 });
 
 
-export const { setSelectedVideo, setVideoList, setPlayListVideos } = videoSlice.actions;
+export const { setSelectedVideo, setVideoList, setPlayListVideos, setHistoryVideos } = videoSlice.actions;
 export default videoSlice.reducer;

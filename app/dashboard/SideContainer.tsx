@@ -20,7 +20,7 @@ export default function SideContainer() {
             ],
         },
         { name: "Library", icon: "📚", list: [] },
-        { name: "History", icon: "🕒", list: [] },
+        { name: "History", icon: "🕒", list: [], link: "/history" },
         { name: "Your Videos", icon: "🎥", list: [] },
         { name: "Watch Later", icon: "⏰", list: [] },
         { name: "Liked Videos", icon: "👍", list: [] },

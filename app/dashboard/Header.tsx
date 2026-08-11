@@ -3,6 +3,7 @@
 
 import { useDispatch } from "react-redux";
 import { toggleSideNavBar } from "../lib/redux-store/appSlice";
+import Link from "next/link";
 
 
 export default function Header() {
@@ -14,10 +15,10 @@ export default function Header() {
 
     return (
         <div className="p-2 flex justify-between text-center items-center w-full">
-            <div className="flex gap-4 items-center">
+            <Link  href="/dashboard" className="flex gap-2 items-center" >
                 <img src="/menu.png" alt="Menu" className="w-6 h-6 cursor-pointer" onClick={toggleMenu} />
-                <img src="/youtube_logo.png" alt="Logo" className="w-30 h-18" />
-            </div>
+                <img src="/Lumio_Logo_Monochrome.png" alt="Logo" className="w-40 h-18" />
+            </Link>
             <div className="flex items-center w-[37rem]">
                 <div className="w-full">
                     <input type="text" placeholder="Search here..."
