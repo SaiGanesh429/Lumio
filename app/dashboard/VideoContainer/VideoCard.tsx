@@ -1,6 +1,6 @@
 
 
-import { setSelectedVideo } from "@/app/lib/redux-store/videoSlice";
+import { setHistoryVideos, setSelectedVideo } from "@/app/lib/redux-store/videoSlice";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 
@@ -9,8 +9,9 @@ export default function VideoCard({ video }: { video: any }) {
 
     const dispatchSelectedVideoDetails = useDispatch();
     const storeSelectedVideoDeatils = (video: any) => {
-
+        console.log("video", video);
         dispatchSelectedVideoDetails(setSelectedVideo(video));
+        dispatchSelectedVideoDetails(setHistoryVideos(video));
     }
 
     return (
