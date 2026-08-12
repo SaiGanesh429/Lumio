@@ -18,7 +18,6 @@ export default function PlaylistVideosPage() {
     const getVideoData = async () => {
         try {
             const response = await fetch(YOUTUBE_API_URL);
-
             const data = await response.json();
             dispatch(setPlayListVideos(data['items']));
 

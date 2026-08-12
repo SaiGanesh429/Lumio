@@ -21,19 +21,17 @@ export default function PlaylistVideosList({ playList }: any) {
             <h2 className="text-xl font-bold mb-4">Playlist Videos</h2>
             {playList?.length > 0 &&
                 playList.map((video: any) => {
-                    const videoId: string = video.id;
+                    const videoId: string = typeof(video.id) == "string" ? video.id : video.id.channelId;
                     const title = video.snippet?.title ?? "Untitled video";
                     const thumbnailUrl = video.snippet?.thumbnails?.high?.url ?? "";
-
                     return (
                         <Link
-                            href={`/Videos/${videoId}`}
-                            key={videoId}
                             onClick={() => {
                                 dispatch(setHistoryVideos(video));
                             }}
-                            className="mb-4 flex flex-row items-center"
-                        >
+                            href={`/Videos/${videoId}`}
+                            key={videoId}
+                            className="mb-4 flex flex-row items-center">
                             <img
                                 src={thumbnailUrl}
                                 alt={title}
