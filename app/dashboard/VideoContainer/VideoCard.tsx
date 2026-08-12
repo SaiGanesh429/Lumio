@@ -5,11 +5,11 @@ import Link from "next/link";
 import { useDispatch } from "react-redux";
 
 export default function VideoCard({ video }: { video: any }) {
-    const videoId = typeof video.id === "string" ? video.id : video.id?.videoId ?? "";
+
+    const videoId = typeof(video.id) == "string" ? video.id : video.id.videoId;
 
     const dispatchSelectedVideoDetails = useDispatch();
     const storeSelectedVideoDeatils = (video: any) => {
-        console.log("video", video);
         dispatchSelectedVideoDetails(setSelectedVideo(video));
         dispatchSelectedVideoDetails(setHistoryVideos(video));
     }

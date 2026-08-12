@@ -8,7 +8,6 @@ import PlaylistVideosList from "../shared_Components/playListVideos";
 export default function History() {
 
   const historyVideos = useSelector((state: any) => state.videos.historyVideos);
-  console.log("historyVideos", historyVideos);
   return (
 
 
