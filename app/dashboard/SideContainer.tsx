@@ -3,6 +3,7 @@
 import Link from "next/link";
 import React from "react";
 import { useSelector } from "react-redux";
+import { usePathname } from "next/navigation";
 
 export default function SideContainer() {
 
@@ -27,25 +28,29 @@ export default function SideContainer() {
         { name: "Show More", icon: "⬇️", list: [] },
     ];
 
+    const pathname = usePathname();
+
     return (isMenuOpen && (
         <div className="w-60 h-full bg-white p-2">
             <ul>
                 {sideNavItems.map((item, index) => (
                     <React.Fragment key={index}>
-                        {item?.link
-                            ? (
-                                <Link href={item.link} className="flex items-center gap-2 p-2 hover:bg-gray-200">
-                                    <span>{item.icon}</span>
-                                    <span className="font-medium bold">{item.name}</span>
-                                </Link>
-                            ) :
-                            (
-                                <li className="flex items-center gap-2 p-2 hover:bg-gray-200">
-                                    <span>{item.icon}</span>
-                                    <span className="font-medium bold">{item.name}</span>
-                                </li>
-                            )
-                        }
+                        {item?.link ? (
+                            (() => {
+                                const isActive = pathname === item.link || pathname?.startsWith(item.link + "/");
+                                return (
+                                    <Link href={item.link} className={`flex items-center gap-2 p-2 rounded ${isActive ? 'bg-red-50 text-red-600 font-semibold' : 'hover:bg-gray-200 text-gray-800'}`}>
+                                        <span>{item.icon}</span>
+                                        <span className="font-medium">{item.name}</span>
+                                    </Link>
+                                )
+                            })()
+                        ) : (
+                            <li className="flex items-center gap-2 p-2 hover:bg-gray-200 text-gray-800">
+                                <span>{item.icon}</span>
+                                <span className="font-medium">{item.name}</span>
+                            </li>
+                        )}
 
                         {item.list.length > 0 && (
                             <ul className="ml-6">

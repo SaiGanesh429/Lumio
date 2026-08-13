@@ -64,44 +64,47 @@ export default function Header() {
 
 
     return (
-        <div className="p-2 flex justify-between text-center items-center w-full">
-            <Link href="/dashboard" className="flex gap-2 items-center" >
-                <img src="/menu.png" alt="Menu" className="w-6 h-6 cursor-pointer" onClick={toggleMenu} />
-                <img src="/Lumio_Logo_Monochrome.png" alt="Logo" className="w-40 h-18" />
-            </Link>
-            <div className="flex flex-column items-center w-[37rem]">
-                <div className="flex w-full flex-row">
-                    <div className="w-full">
-                        <input type="text" placeholder="Search here..."
-                            value={autoSuggestQuery}
-                            onChange={(e) => {
-                                setAutoSuggestQuery(e.target.value);
-                                setSearchQuery(e.target.value);
-                                setShowSuggestion(true);
-                            }}
-                            onFocus={() => setShowSuggestion(true)}
-                            onBlur={() => setTimeout(() => setShowSuggestion(false), 200)}
-                            className=" p-2 w-full p-2 text-black placeholder:text-gray-400 border border-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 rounded-l-full" />
+        <div className="bg-white shadow-sm sticky top-0 z-40">
+            <div className="max-w-[1200px] mx-auto flex justify-between items-center p-3">
+                <div className="flex items-center gap-3">
+                    <button onClick={toggleMenu} className="p-1 rounded hover:bg-gray-100">
+                        <img src="/menu.png" alt="Menu" className="w-6 h-6" />
+                    </button>
+                    <Link href="/dashboard" className="flex items-center">
+                        <img src="/Lumio_Logo_Monochrome.png" alt="Logo" className="w-36 h-10 object-contain" />
+                    </Link>
+                </div>
+
+                <div className="flex-1 max-w-[640px] mx-6">
+                    <div className="relative">
+                        <div className="flex">
+                            <input type="text" placeholder="Search here..."
+                                value={autoSuggestQuery}
+                                onChange={(e) => {
+                                    setAutoSuggestQuery(e.target.value);
+                                    setSearchQuery(e.target.value);
+                                    setShowSuggestion(true);
+                                }}
+                                onFocus={() => setShowSuggestion(true)}
+                                onBlur={() => setTimeout(() => setShowSuggestion(false), 200)}
+                                className="w-full p-2 text-black placeholder:text-gray-400 border border-gray-200 focus:outline-none focus:ring-1 focus:ring-red-300 rounded-l-full" />
+                            <button className="bg-white border-gray-200 hover:bg-gray-400 text-white rounded-r-full px-4" onClick={() => getSearchResuts()}>🔍</button>
+                        </div>
+
+                        {showSuggestion && (
+                            <div className="absolute left-0 right-0 mt-1 bg-white text-black rounded-lg shadow z-50">
+                                <ul className="list-none p-2">
+                                    {autoSuggestResults && autoSuggestResults?.length > 0 && autoSuggestResults.map((result: any, index: number) => (
+                                        <li key={index} onClick={() => handleAutoSuggestSearch(result)} className="flex p-2 hover:bg-gray-100 cursor-pointer">🔍 {result}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
                     </div>
-                    <button className="border border-gray-500 border-l-0 rounded-r-full p-2 w-10" onClick={() => getSearchResuts()}>🔍</button>
                 </div>
-                <div className="absolute bg-white text-black w-[35rem] rounded-lg mt-112 z-10">
-                    {showSuggestion &&
-                        <ul className="list-none p-2">
-                            {
-                                autoSuggestResults && autoSuggestResults?.length > 0 && autoSuggestResults.map((result: any, index: number) => (
-                                    <li key={index} onClick={() => handleAutoSuggestSearch(result)}
-                                        className="flex p-1 p-2 hover:bg-gray-200 cursor-pointer">🔍 {result}</li>
-                                ))
-                            }
-                        </ul>}
 
-                </div>
-            </div>
-
-            <div>
                 <div>
-                    <img src="https://yt3.ggpht.com/yti/ANjgQV9jxvdwyeKTogLZwtc1rKNwUzth0dl7S837oIkrl55bIgf4=s88-c-k-c0x00ffffff-no-rj" alt="Logo" className="w-8 h-8 rounded-full" />
+                    <img src="https://yt3.ggpht.com/yti/ANjgQV9jxvdwyeKTogLZwtc1rKNwUzth0dl7S837oIkrl55bIgf4=s88-c-k-c0x00ffffff-no-rj" alt="Logo" className="w-9 h-9 rounded-full" />
                 </div>
             </div>
         </div>

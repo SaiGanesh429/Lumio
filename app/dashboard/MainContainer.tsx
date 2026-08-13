@@ -10,9 +10,13 @@ export default function MainContainer() {
 
 
     return (
-        <div>
-            <ButtonList></ButtonList>
-            <VideoContainer />
+        <div className="w-full">
+            <div className="bg-white p-4 rounded-md shadow-sm mb-4">
+                <ButtonList />
+            </div>
+            <div>
+                <VideoContainer />
+            </div>
         </div>
     )
 }
