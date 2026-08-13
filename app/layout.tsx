@@ -16,10 +16,13 @@ export default function RootLayout({
 
                         <Header />
 
-                        <div className="flex">
+                        <div className="flex bg-gray-50">
                             <SideContainer />
-                            {children}
-
+                            <main className="flex-1 p-6">
+                                <div className="max-w-[1200px] mx-auto">
+                                    {children}
+                                </div>
+                            </main>
                         </div>
                     </StoreProvider>
                 </div>

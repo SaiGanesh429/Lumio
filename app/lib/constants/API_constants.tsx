@@ -12,3 +12,8 @@ export const YOUTUBE_SEARCH_SUGGESTIONS_API_URL
 
 
 export const YOUTUBE_SEARCH_API_URL = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=`;
+
+export const YOUTUBE_LIVE_API_URL = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&eventType=live&maxResults=50&q=news&type=video&key=${YOU_TUBE_API_KEY}`;
+
+
+export const YOUTUBE_VIDEO_BY_ID =`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=`

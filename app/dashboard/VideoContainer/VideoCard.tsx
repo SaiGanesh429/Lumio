@@ -15,17 +15,21 @@ export default function VideoCard({ video }: { video: any }) {
     }
 
     return (
-        <Link href={`/Videos/${encodeURIComponent(videoId)}`} onClick={() => { storeSelectedVideoDeatils(video) }} className="block w-80 h-64 m-2">
-            <div className="w-full h-40">
+        <Link
+            href={`/Videos/${encodeURIComponent(videoId)}`}
+            onClick={() => { storeSelectedVideoDeatils(video) }}
+            className="block bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition p-0"
+        >
+            <div className="w-full h-44 bg-gray-100">
                 <img
                     src={video.snippet.thumbnails.high.url}
                     alt={video.snippet.title}
                     className="w-full h-full object-cover"
                 />
             </div>
-            <div className="p-2">
-                <h3 className="text-md font-semibold">{video.snippet.title}</h3>
-                <p className="text-sm text-gray-600">{video.snippet.channelTitle}</p>
+            <div className="p-3">
+                <h3 className="text-md font-semibold text-gray-900 line-clamp-2">{video.snippet.title}</h3>
+                <p className="text-sm text-gray-500 mt-2">{video.snippet.channelTitle}</p>
             </div>
         </Link>
     );
